@@ -1,0 +1,36 @@
+<RCC>
+    <qresource prefix="/images/general">
+        <file>images/appicon.svg</file>
+    </qresource>
+    <qresource prefix="/images/animals">
+        <file>images/animals/animals-none.png</file>
+        <file>images/animals/animals-unknown.png</file>
+        <file>images/animals/animals-horse7.png</file>
+        <file>images/animals/animals-monkey9.png</file>
+        <file>images/animals/animals-tiger3.png</file>
+        <file>images/animals/animals-rabbit4.png</file>
+        <file>images/animals/animals-snake6.png</file>
+        <file>images/animals/animals-rat1.png</file>
+        <file>images/animals/animals-goat8.png</file>
+        <file>images/animals/animals-dog11.png</file>
+        <file>images/animals/animals-rooster10.png</file>
+        <file>images/animals/animals-dragon5.png</file>
+        <file>images/animals/animals-pig12.png</file>
+        <file>images/animals/animals-ox2.png</file>
+    </qresource>
+    <qresource prefix="/images/basis">
+        <file>images/basis/basis-in.png</file>
+        <file>images/basis/basis-none.png</file>
+        <file>images/basis/basis-yan.png</file>
+        <file>images/basis/basis-unknown.png</file>
+    </qresource>
+    <qresource prefix="/images/elements">
+        <file>images/elements/elements-none.png</file>
+        <file>images/elements/elements-unknown.png</file>
+        <file>images/elements/elements-water5.png</file>
+        <file>images/elements/elements-fire2.png</file>
+        <file>images/elements/elements-wood1.png</file>
+        <file>images/elements/elements-earth3.png</file>
+        <file>images/elements/elements-metal4.png</file>
+    </qresource>
+</RCC>

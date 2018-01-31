@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+This file is a part of __PROGRAM_NAME__ __PROGRAM_VERSION__
+
+This file installs __PROGRAM_NAME__ in the operating system, cleans
+temporary files and directory in the project.
+
+__PROGRAM_COPYRIGHT__ __PROGRAM_AUTHOR__ __PROGRAM_AUTHOR_EMAIL__
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>361</width>
+    <height>397</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>361</width>
+    <height>397</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>361</width>
+    <height>397</height>
+   </size>
+  </property>
+  <property name="baseSize">
+   <size>
+    <width>0</width>
+    <height>0</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>YearInfo</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="res.qrc">
+    <normaloff>:/images/general/images/appicon.svg</normaloff>:/images/general/images/appicon.svg</iconset>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QPushButton" name="pushButton_eval">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>310</y>
+      <width>91</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Посчитать</string>
+    </property>
+    <property name="autoDefault">
+     <bool>true</bool>
+    </property>
+    <property name="default">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_clear">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>310</y>
+      <width>91</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Очистить</string>
+    </property>
+    <property name="autoDefault">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBox">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>0</y>
+      <width>341</width>
+      <height>131</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="title">
+     <string>Дата</string>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
+    <widget class="QSpinBox" name="spinBox_day">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>30</y>
+       <width>61</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="minimum">
+      <number>1</number>
+     </property>
+     <property name="maximum">
+      <number>31</number>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="spinBox_year">
+     <property name="geometry">
+      <rect>
+       <x>230</x>
+       <y>30</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="minimum">
+      <number>1</number>
+     </property>
+     <property name="maximum">
+      <number>1000000</number>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_month">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>30</y>
+       <width>111</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <property name="maxVisibleItems">
+      <number>12</number>
+     </property>
+     <property name="maxCount">
+      <number>12</number>
+     </property>
+     <item>
+      <property name="text">
+       <string>Январь</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Февраль</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Март</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Апрель</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Май</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Июнь</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Июль</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Август</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Сентябрь</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Октябрь</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Ноябрь</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Декабрь</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QRadioButton" name="radioButton_era">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>80</y>
+       <width>101</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Наша эра</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="radioButton_era_before">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>80</y>
+       <width>131</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>До нашей эры</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>140</y>
+      <width>341</width>
+      <height>161</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Результат</string>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+    <widget class="QLabel" name="label_basis">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>30</y>
+       <width>81</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Начало</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_element">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>30</y>
+       <width>81</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Стихия</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_animal">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>30</y>
+       <width>81</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Животное</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_basis_img">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>70</y>
+       <width>64</width>
+       <height>64</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_element_img">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>70</y>
+       <width>64</width>
+       <height>64</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_animal_img">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>70</y>
+       <width>64</width>
+       <height>64</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>361</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>&amp;Справка</string>
+    </property>
+    <addaction name="action"/>
+   </widget>
+   <addaction name="menu"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="action">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/general/images/app.png</normaloff>:/images/general/images/app.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;О программе</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>spinBox_day</tabstop>
+  <tabstop>comboBox_month</tabstop>
+  <tabstop>spinBox_year</tabstop>
+  <tabstop>radioButton_era</tabstop>
+  <tabstop>radioButton_era_before</tabstop>
+  <tabstop>pushButton_clear</tabstop>
+  <tabstop>pushButton_eval</tabstop>
+ </tabstops>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>comboBox_month</sender>
+   <signal>currentIndexChanged(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>slot1_alignNumberOfDays()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>175</x>
+     <y>72</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>180</x>
+     <y>198</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinBox_year</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>slot1_alignNumberOfDays()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>285</x>
+     <y>72</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>180</x>
+     <y>198</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_era</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>slot1_alignNumberOfDays()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>280</x>
+     <y>117</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>180</x>
+     <y>198</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>slot1_alignNumberOfDays()</slot>
+  <slot>slot2_decreaseYear()</slot>
+  <slot>slot3_increaseYear()</slot>
+ </slots>
+</ui>
