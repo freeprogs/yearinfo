@@ -56,7 +56,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
    </size>
   </property>
   <property name="windowTitle">
-   <string>YearInfo</string>
+   <string>__PROGRAM_NAME_FORTITLES__</string>
   </property>
   <property name="windowIcon">
    <iconset resource="res.qrc">
