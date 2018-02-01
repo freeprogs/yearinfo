@@ -203,8 +203,13 @@ void MainWindow::on_action_triggered()
 {
     QString title = QString::fromUtf8("О программе");
     QString msg = QString::fromUtf8(
-        "Вычислияет начало, стихию и животное "
-        "по восточному календарю."
+        "__PROGRAM_NAME__ __PROGRAM_VERSION__\n"
+        "\n"
+        "Вычислияет начало, стихию и животное по восточному календарю.\n"
+        "\n"
+        "__PROGRAM_COPYRIGHT__ __PROGRAM_AUTHOR__"
+        "\n"
+        "__PROGRAM_AUTHOR_EMAIL__"
     );
 
     QMessageBox::information(this, title, msg);
