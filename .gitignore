@@ -1,5 +1,6 @@
 src_build/
 build/
 Makefile
+!src_template/app/tests/Makefile
 notes
 imgproj/

@@ -108,6 +108,22 @@ SRC_APP_DESKTOP = $(PROG).desktop
 SRC_APP_SVG = $(PROG).svg
 
 
+# Tests
+
+TESTS_DIR = tests
+
+TESTS_SRC_TEMPLATE_DIR = $(SRC_TEMPLATE_DIR)/$(SRC_APP_DIR)/$(TESTS_DIR)
+TESTS_SRC_BUILD_DIR = $(SRC_BUILD_DIR)/$(SRC_APP_DIR)/$(TESTS_DIR)
+TESTS_BUILD_DIR = $(BUILD_DIR)/$(TESTS_DIR)
+TESTS_LOCAL_BUILD_DIR = build
+
+TESTS_MAKEFILE = Makefile
+TESTS_RUNTESTS_SHELLSCRIPT = runtests.sh
+
+TEST_SRC_CALENDAR_CPP = test_calendar.cpp
+TEST_SRC_CALENDAR_PRO = test_calendar.pro
+
+
 # Install section
 
 app_dir = /usr/local/bin
@@ -126,7 +142,7 @@ SYS_ICON_INSTALL_DIR = $(sys_icon_dir)
 all: build
 
 help:
-	@echo "usage: make [ clean | install | uninstall ]"
+	@echo "usage: make [ tests | clean | install | uninstall ]"
 
 build:
 	@[ -d $(SRC_BUILD_DIR) ] $&& rm -rf $(SRC_BUILD_DIR)
@@ -199,6 +215,21 @@ build:
 	@make -C $(BUILD_DIR)/$(BUILD_APP_DIR)
 
 	@echo "$(PROG) has built in the \`$(BUILD_DIR)' directory."
+
+tests: build
+	@[ -d $(TESTS_SRC_BUILD_DIR) ] $&& rm -rf $(TESTS_SRC_BUILD_DIR)
+	@mkdir $(TESTS_SRC_BUILD_DIR)
+
+	@$(M4) $(VERSION_M4) $(TESTS_SRC_TEMPLATE_DIR)/$(TESTS_MAKEFILE) > $(TESTS_SRC_BUILD_DIR)/$(TESTS_MAKEFILE)
+	@$(M4) $(VERSION_M4) $(TESTS_SRC_TEMPLATE_DIR)/$(TESTS_RUNTESTS_SHELLSCRIPT) > $(TESTS_SRC_BUILD_DIR)/$(TESTS_RUNTESTS_SHELLSCRIPT)
+	@$(M4) $(VERSION_M4) $(TESTS_SRC_TEMPLATE_DIR)/$(TEST_SRC_CALENDAR_CPP) > $(TESTS_SRC_BUILD_DIR)/$(TEST_SRC_CALENDAR_CPP)
+	@$(M4) $(VERSION_M4) $(TESTS_SRC_TEMPLATE_DIR)/$(TEST_SRC_CALENDAR_PRO) > $(TESTS_SRC_BUILD_DIR)/$(TEST_SRC_CALENDAR_PRO)
+
+	@$(MAKE) -C $(TESTS_SRC_BUILD_DIR)
+	@cp -rp $(TESTS_SRC_BUILD_DIR)/$(TESTS_LOCAL_BUILD_DIR) $(BUILD_DIR)/$(TESTS_DIR)
+	@echo "Tests have built in the \`$(TESTS_BUILD_DIR)' directory."
+	@echo "Running tests..."
+	@(cd $(BUILD_DIR)/$(TESTS_DIR) && ./$(TESTS_RUNTESTS_SHELLSCRIPT))
 
 clean:
 	@rm -rf $(SRC_BUILD_DIR)
