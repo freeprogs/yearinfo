@@ -74,7 +74,8 @@
   :ARCHIVE:  tasks_archive.org::* Архив окружения
   :END:
 
-** TASK Создать Makefile для версионирования проекта
+** DONE Создать Makefile для версионирования проекта
+   CLOSED: [2018-04-04 Ср 16:41]
    :PROPERTIES:
    :issue_id: 4
    :issue_type: task
