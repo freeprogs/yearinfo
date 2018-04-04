@@ -195,7 +195,7 @@ build:
 	@$(COPYTREECMD) $(SRC_BUILD_DIR)/$(BUILD_APP_DIR) $(BUILD_DIR)
 	@$(COPYTREECMD) $(SRC_BUILD_DIR)/$(BUILD_SYS_DIR) $(BUILD_DIR)
 
-	@qmake-qt5 $(BUILD_DIR)/$(BUILD_APP_DIR)/yearinfo.pro -spec linux-g++ -o $(BUILD_DIR)/$(BUILD_APP_DIR)/Makefile
+	@qmake-qt5 $(BUILD_DIR)/$(BUILD_APP_DIR)/$(SRC_YEARINFO_PRO) -spec linux-g++ -o $(BUILD_DIR)/$(BUILD_APP_DIR)/Makefile
 	@make -C $(BUILD_DIR)/$(BUILD_APP_DIR)
 
 	@echo "$(PROG) has built in the \`$(BUILD_DIR)' directory."
