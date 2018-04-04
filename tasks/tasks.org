@@ -73,11 +73,3 @@
   :COLUMNS:  %3issue_id(ID) %4issue_type(TYPE) %TODO %40ITEM %SCHEDULED %DEADLINE %1PRIORITY
   :ARCHIVE:  tasks_archive.org::* Архив окружения
   :END:
-
-** DONE Создать Makefile для версионирования проекта
-   CLOSED: [2018-04-04 Ср 16:41]
-   :PROPERTIES:
-   :issue_id: 4
-   :issue_type: task
-   :END:
-   <2017-01-12 Чт>

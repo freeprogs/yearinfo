@@ -7,3 +7,16 @@
 * Архив багов
 
 * Архив окружения
+
+** DONE Создать Makefile для версионирования проекта
+   CLOSED: [2018-04-04 Ср 16:41]
+   :PROPERTIES:
+   :issue_id: 4
+   :issue_type: task
+   :ARCHIVE_TIME: 2018-04-04 Ср 16:43
+   :ARCHIVE_FILE: ~/prog/projects/cpp/yearinfo/tasks/tasks.org
+   :ARCHIVE_OLPATH: Окружение
+   :ARCHIVE_CATEGORY: tasks
+   :ARCHIVE_TODO: DONE
+   :END:
+   <2017-01-12 Чт>
