@@ -30,11 +30,11 @@ private slots:
 void TestCalendar::testValues()
 {
     Calendar obj;
-    int res;
+    Calendar::BasisIndex res;
 
     obj.setDate(1, 1, 2017, true);
     res = obj.getBasis();
-    QVERIFY(res == 0);
+    QVERIFY(res == Calendar::B_Yan);
 }
 
 QTEST_MAIN(TestCalendar)

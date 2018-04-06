@@ -31,16 +31,16 @@ void Calendar::setDate(
     this->isOurEra = isOurEra;
 }
 
-int Calendar::getBasis()
+Calendar::BasisIndex Calendar::getBasis()
 {
-    int res = -1;
+    BasisIndex res = B_Unknown;
     PartOfYear part = getPart();
 
     if (part == P_Unknown)
         return res;
 
-    int era_after[2] = { 0, 1 };
-    int era_before[2] = { 1, 0 };
+    BasisIndex era_after[2] = { B_Yan, B_In };
+    BasisIndex era_before[2] = { B_In, B_Yan };
 
     if (isOurEra) {
         if (part == P_Big) {
@@ -61,16 +61,20 @@ int Calendar::getBasis()
     return res;
 }
 
-int Calendar::getElement()
+Calendar::ElementIndex Calendar::getElement()
 {
-    int res = -1;
+    ElementIndex res = E_Unknown;
     PartOfYear part = getPart();
 
     if (part == P_Unknown)
         return res;
 
-    int era_after[10] = { 3, 3, 4, 4, 0, 0, 1, 1, 2, 2 };
-    int era_before[10] = { 3, 3, 2, 2, 1, 1, 0, 0, 4, 4 };
+    ElementIndex era_after[10] = { E_Metal, E_Metal, E_Water, E_Water,
+                                   E_Wood, E_Wood, E_Fire, E_Fire,
+                                   E_Earth, E_Earth };
+    ElementIndex era_before[10] = { E_Metal, E_Metal, E_Earth, E_Earth,
+                                    E_Fire, E_Fire, E_Wood, E_Wood,
+                                    E_Water, E_Water };
 
     if (isOurEra) {
         if (part == P_Big) {
@@ -91,16 +95,22 @@ int Calendar::getElement()
     return res;
 }
 
-int Calendar::getAnimal()
+Calendar::AnimalIndex Calendar::getAnimal()
 {
-    int res = -1;
+    AnimalIndex res = A_Unknown;
     PartOfYear part = getPart();
 
     if (part == P_Unknown)
         return res;
 
-    int era_after[12] = { 8, 9, 10, 11, 0, 1, 2, 3, 4, 5, 6, 7 };
-    int era_before[12] = { 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, 11, 10 };
+    AnimalIndex era_after[12] = { A_Monkey, A_Rooster, A_Dog,
+                                  A_Pig, A_Rat, A_Ox,
+                                  A_Tiger, A_Rabbit, A_Dragon,
+                                  A_Snake, A_Horse, A_Goat };
+    AnimalIndex era_before[12] = { A_Rooster, A_Monkey, A_Goat,
+                                   A_Horse, A_Snake, A_Dragon,
+                                   A_Rabbit, A_Tiger, A_Ox,
+                                   A_Rat, A_Pig, A_Dog };
 
     if (isOurEra) {
         if (part == P_Big) {

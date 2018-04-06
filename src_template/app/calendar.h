@@ -45,9 +45,37 @@ public:
                  bool isOurEra);
 
 public:
-    int getBasis();
-    int getElement();
-    int getAnimal();
+    enum BasisIndex {
+        B_Unknown,
+        B_Yan,
+        B_In
+    };
+    enum ElementIndex {
+        E_Unknown,
+        E_Wood,
+        E_Fire,
+        E_Earth,
+        E_Metal,
+        E_Water
+    };
+    enum AnimalIndex {
+        A_Unknown,
+        A_Rat,
+        A_Ox,
+        A_Tiger,
+        A_Rabbit,
+        A_Dragon,
+        A_Snake,
+        A_Horse,
+        A_Goat,
+        A_Monkey,
+        A_Rooster,
+        A_Dog,
+        A_Pig
+    };
+    BasisIndex getBasis();
+    ElementIndex getElement();
+    AnimalIndex getAnimal();
 
 private:
     PartOfYear getPart();

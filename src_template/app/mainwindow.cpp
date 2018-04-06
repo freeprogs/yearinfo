@@ -114,76 +114,76 @@ void MainWindow::on_pushButton_eval_clicked()
     QPixmap basisImg, elementImg, animalImg;
 
     switch (calendar->getBasis()) {
-    case 0:
+    case Calendar::B_Yan:
         basisImg = pictures->basis(PicturesHolder::B_Yan);
         break;
-    case 1:
+    case Calendar::B_In:
         basisImg = pictures->basis(PicturesHolder::B_In);
         break;
-    case -1:
+    case Calendar::B_Unknown:
         basisImg = pictures->basis(PicturesHolder::B_Unknown);
         break;
     }
 
     switch (calendar->getElement()) {
-    case 0:
+    case Calendar::E_Wood:
         elementImg = pictures->element(PicturesHolder::E_Wood);
         break;
-    case 1:
+    case Calendar::E_Fire:
         elementImg = pictures->element(PicturesHolder::E_Fire);
         break;
-    case 2:
+    case Calendar::E_Earth:
         elementImg = pictures->element(PicturesHolder::E_Earth);
         break;
-    case 3:
+    case Calendar::E_Metal:
         elementImg = pictures->element(PicturesHolder::E_Metal);
         break;
-    case 4:
+    case Calendar::E_Water:
         elementImg = pictures->element(PicturesHolder::E_Water);
         break;
-    case -1:
+    case Calendar::E_Unknown:
         elementImg = pictures->element(PicturesHolder::E_Unknown);
         break;
     }
 
     switch (calendar->getAnimal()) {
-    case 0:
+    case Calendar::A_Rat:
         animalImg = pictures->animal(PicturesHolder::A_Rat);
         break;
-    case 1:
+    case Calendar::A_Ox:
         animalImg = pictures->animal(PicturesHolder::A_Ox);
         break;
-    case 2:
+    case Calendar::A_Tiger:
         animalImg = pictures->animal(PicturesHolder::A_Tiger);
         break;
-    case 3:
+    case Calendar::A_Rabbit:
         animalImg = pictures->animal(PicturesHolder::A_Rabbit);
         break;
-    case 4:
+    case Calendar::A_Dragon:
         animalImg = pictures->animal(PicturesHolder::A_Dragon);
         break;
-    case 5:
+    case Calendar::A_Snake:
         animalImg = pictures->animal(PicturesHolder::A_Snake);
         break;
-    case 6:
+    case Calendar::A_Horse:
         animalImg = pictures->animal(PicturesHolder::A_Horse);
         break;
-    case 7:
+    case Calendar::A_Goat:
         animalImg = pictures->animal(PicturesHolder::A_Goat);
         break;
-    case 8:
+    case Calendar::A_Monkey:
         animalImg = pictures->animal(PicturesHolder::A_Monkey);
         break;
-    case 9:
+    case Calendar::A_Rooster:
         animalImg = pictures->animal(PicturesHolder::A_Rooster);
         break;
-    case 10:
+    case Calendar::A_Dog:
         animalImg = pictures->animal(PicturesHolder::A_Dog);
         break;
-    case 11:
+    case Calendar::A_Pig:
         animalImg = pictures->animal(PicturesHolder::A_Pig);
         break;
-    case -1:
+    case Calendar::A_Unknown:
         animalImg = pictures->animal(PicturesHolder::A_Unknown);
         break;
     }
