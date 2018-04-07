@@ -34,28 +34,29 @@ void Calendar::setDate(
 Calendar::BasisIndex Calendar::getBasis()
 {
     BasisIndex res = B_Unknown;
-    PartOfYear part = getPart();
+    CalendarFunctions::PartOfYear part =
+        calFuncs.getPart(day, month, year, isOurEra);
 
-    if (part == P_Unknown)
+    if (part == CalendarFunctions::P_Unknown)
         return res;
 
     BasisIndex era_after[2] = { B_Yan, B_In };
     BasisIndex era_before[2] = { B_In, B_Yan };
 
     if (isOurEra) {
-        if (part == P_Big) {
+        if (part == CalendarFunctions::P_Big) {
             res = era_after[year % 2];
         }
-        else if (part == P_Small) {
+        else if (part == CalendarFunctions::P_Small) {
             if (year > 1)
                 res = era_after[(year - 1) % 2];
             else
                 res = era_after[0];
         }
     } else {
-        if (part == P_Big)
+        if (part == CalendarFunctions::P_Big)
             res = era_before[year % 2];
-        else if (part == P_Small)
+        else if (part == CalendarFunctions::P_Small)
             res = era_before[(year + 1) % 2];
     }
     return res;
@@ -64,9 +65,10 @@ Calendar::BasisIndex Calendar::getBasis()
 Calendar::ElementIndex Calendar::getElement()
 {
     ElementIndex res = E_Unknown;
-    PartOfYear part = getPart();
+    CalendarFunctions::PartOfYear part =
+        calFuncs.getPart(day, month, year, isOurEra);
 
-    if (part == P_Unknown)
+    if (part == CalendarFunctions::P_Unknown)
         return res;
 
     ElementIndex era_after[10] = { E_Metal, E_Metal, E_Water, E_Water,
@@ -77,19 +79,19 @@ Calendar::ElementIndex Calendar::getElement()
                                     E_Water, E_Water };
 
     if (isOurEra) {
-        if (part == P_Big) {
+        if (part == CalendarFunctions::P_Big) {
             res = era_after[year % 10];
         }
-        else if (part == P_Small) {
+        else if (part == CalendarFunctions::P_Small) {
             if (year > 1)
                 res = era_after[(year - 1) % 10];
             else
                 res = era_after[0];
         }
     } else {
-        if (part == P_Big)
+        if (part == CalendarFunctions::P_Big)
             res = era_before[year % 10];
-        else if (part == P_Small)
+        else if (part == CalendarFunctions::P_Small)
             res = era_before[(year + 1) % 10];
     }
     return res;
@@ -98,9 +100,10 @@ Calendar::ElementIndex Calendar::getElement()
 Calendar::AnimalIndex Calendar::getAnimal()
 {
     AnimalIndex res = A_Unknown;
-    PartOfYear part = getPart();
+    CalendarFunctions::PartOfYear part =
+        calFuncs.getPart(day, month, year, isOurEra);
 
-    if (part == P_Unknown)
+    if (part == CalendarFunctions::P_Unknown)
         return res;
 
     AnimalIndex era_after[12] = { A_Monkey, A_Rooster, A_Dog,
@@ -113,34 +116,35 @@ Calendar::AnimalIndex Calendar::getAnimal()
                                    A_Rat, A_Pig, A_Dog };
 
     if (isOurEra) {
-        if (part == P_Big) {
+        if (part == CalendarFunctions::P_Big) {
             res = era_after[year % 12];
         }
-        else if (part == P_Small) {
+        else if (part == CalendarFunctions::P_Small) {
             if (year > 1)
                 res = era_after[(year - 1) % 12];
             else
                 res = era_after[0];
         }
     } else {
-        if (part == P_Big)
+        if (part == CalendarFunctions::P_Big)
             res = era_before[year % 12];
-        else if (part == P_Small)
+        else if (part == CalendarFunctions::P_Small)
             res = era_before[(year + 1) % 12];
     }
     return res;
 }
 
-Calendar::PartOfYear Calendar::getPart()
+CalendarFunctions::PartOfYear
+CalendarFunctions::getPart(int day, int month, size_t year, bool isOurEra)
 {
     // до 20 января включительно - старый год
     // после 20 февраля включительно - новый год
 
     if (month == 1 && day <= 20) {
-        return P_Small;
+        return CalendarFunctions::P_Small;
     }
     if (month > 2 || (month == 2 && day >= 20)) {
-        return P_Big;
+        return CalendarFunctions::P_Big;
     }
     if ((month == 1 && day > 20) || (month == 2 && day < 20)) {
         if (isOurEra) {
@@ -148,13 +152,13 @@ Calendar::PartOfYear Calendar::getPart()
             if (year == size_t(tableDate.year())) {
                 QDate today(year, month, day);
                 if (today >= tableDate)
-                    return P_Big;
+                    return CalendarFunctions::P_Big;
                 else
-                    return P_Small;
+                    return CalendarFunctions::P_Small;
             }
         }
     }
-    return P_Unknown;
+    return CalendarFunctions::P_Unknown;
 }
 
 static QDate knownDatesTable[] = {
@@ -209,7 +213,7 @@ static QDate knownDatesTable[] = {
     QDate(2043, 2, 10),
 };
 
-QDate Calendar::tableLookUp(size_t year)
+QDate CalendarFunctions::tableLookUp(size_t year)
 {
     size_t size =
         sizeof knownDatesTable / sizeof knownDatesTable[0];

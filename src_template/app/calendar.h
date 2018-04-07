@@ -23,19 +23,23 @@
 #include <QDate>
 #include <QDebug>
 
-class Calendar {
-
+class CalendarFunctions {
+public:
     enum PartOfYear {
         P_Unknown,
         P_Small,
         P_Big
     };
+    PartOfYear getPart(int day, int month, size_t year, bool isOurEra);
+    QDate tableLookUp(size_t year);
+};
 
+class Calendar {
     int day;
     int month;
     size_t year;
     bool isOurEra;
-
+    CalendarFunctions calFuncs;
 public:
     Calendar() {};
     ~Calendar() {};
@@ -43,8 +47,6 @@ public:
                  int month,
                  size_t year,
                  bool isOurEra);
-
-public:
     enum BasisIndex {
         B_Unknown,
         B_Yan,
@@ -76,10 +78,6 @@ public:
     BasisIndex getBasis();
     ElementIndex getElement();
     AnimalIndex getAnimal();
-
-private:
-    PartOfYear getPart();
-    QDate tableLookUp(size_t year);
 };
 
 #endif // CALENDAR_H
