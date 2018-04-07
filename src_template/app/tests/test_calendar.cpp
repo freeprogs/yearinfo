@@ -24,8 +24,36 @@ class TestCalendar: public QObject
 {
     Q_OBJECT
 private slots:
+    void testGetPart();
     void testTableLookUp();
 };
+
+void TestCalendar::testGetPart()
+{
+    CalendarFunctions obj;
+
+    // values without table lookup
+    QVERIFY(obj.getPart(1, 1, 1800, true) == CalendarFunctions::P_Small);
+    QVERIFY(obj.getPart(1, 2, 1800, true) == CalendarFunctions::P_Unknown);
+    QVERIFY(obj.getPart(1, 4, 1800, true) == CalendarFunctions::P_Big);
+
+    // values with table lookup
+    QVERIFY(obj.getPart(1, 1, 2016, true) == CalendarFunctions::P_Small);
+    QVERIFY(obj.getPart(7, 2, 2016, true) == CalendarFunctions::P_Small);
+    QVERIFY(obj.getPart(8, 2, 2016, true) == CalendarFunctions::P_Big);
+    QVERIFY(obj.getPart(1, 4, 2016, true) == CalendarFunctions::P_Big);
+
+    // values in before our era
+    QVERIFY(obj.getPart(1, 1, 2016, false) == CalendarFunctions::P_Small);
+    QVERIFY(obj.getPart(1, 2, 2016, false) == CalendarFunctions::P_Unknown);
+    QVERIFY(obj.getPart(1, 4, 2016, false) == CalendarFunctions::P_Big);
+
+    // left border value
+    QVERIFY(obj.getPart(1, 1, 4294967295, false) == CalendarFunctions::P_Small);
+
+    // right border value
+    QVERIFY(obj.getPart(31, 12, 4294967295, true) == CalendarFunctions::P_Big);
+}
 
 void TestCalendar::testTableLookUp()
 {
