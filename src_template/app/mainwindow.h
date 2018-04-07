@@ -34,6 +34,12 @@ namespace Ui {
 class MainWindow;
 }
 
+class MainWindowFunctions {
+public:
+    bool isLeapYear(size_t year);
+    bool isLeapNegativeYear(size_t year);
+};
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -63,14 +69,11 @@ private:
     PicturesHolder *pictures;
     Calendar *calendar;
     bool focusOnRadio;
+    MainWindowFunctions winFuncs;
 
 public:
     void clearDate();
     void clearResult();
-
-private:
-    bool isLeapYear(size_t year);
-    bool isLeapNegativeYear(size_t year);
 };
 
 #endif // MAINWINDOW_H

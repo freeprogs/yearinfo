@@ -226,8 +226,8 @@ void MainWindow::slot1_alignNumberOfDays()
 
     if (month == 2) {
         int value = monthDays[month - 1];
-        if ((isOurEra && isLeapYear(year)) ||
-            (!isOurEra && isLeapNegativeYear(year)))
+        if ((isOurEra && winFuncs.isLeapYear(year)) ||
+            (!isOurEra && winFuncs.isLeapNegativeYear(year)))
             value++;
         ui->spinBox_day->setMaximum(value);
     } else {
@@ -282,14 +282,14 @@ void MainWindow::slot3_increaseYear()
     }
 }
 
-bool MainWindow::isLeapYear(size_t year)
+bool MainWindowFunctions::isLeapYear(size_t year)
 {
     // 500 делится на 100 и на 4, но не делится на 400
     // 400 делится на 100 и на 4, и делится на 400
     return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
 }
 
-bool MainWindow::isLeapNegativeYear(size_t year)
+bool MainWindowFunctions::isLeapNegativeYear(size_t year)
 {
     // 1 год до нашей эры - это високосный год столетия
     // до нашей эры 1, 5, 9 ... - это годы через 4
