@@ -24,17 +24,27 @@ class TestCalendar: public QObject
 {
     Q_OBJECT
 private slots:
-    void testValues();
+    void testTableLookUp();
 };
 
-void TestCalendar::testValues()
+void TestCalendar::testTableLookUp()
 {
-    Calendar obj;
-    Calendar::BasisIndex res;
+    CalendarFunctions obj;
 
-    obj.setDate(1, 1, 2017, true);
-    res = obj.getBasis();
-    QVERIFY(res == Calendar::B_Yan);
+    // left border value
+    QVERIFY(obj.tableLookUp(1900) == QDate(1900, 1, 31));
+
+    // right border value
+    QVERIFY(obj.tableLookUp(2043) == QDate(2043, 2, 10));
+
+    // middle value
+    QVERIFY(obj.tableLookUp(2000) == QDate(2000, 2, 5));
+
+    // before left border value
+    QVERIFY(obj.tableLookUp(1899) == QDate(0, 0, 0));
+
+    // after right border value
+    QVERIFY(obj.tableLookUp(2044) == QDate(0, 0, 0));
 }
 
 QTEST_MAIN(TestCalendar)
