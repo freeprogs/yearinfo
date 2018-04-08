@@ -29,10 +29,15 @@ BUILD_CALENDAR_DIR = test_calendar
 SRC_CALENDAR_CPP_TEST = test_calendar.cpp
 SRC_CALENDAR_PRO_TEST = test_calendar.pro
 
+TARGET_MAINWINDOW = test_mainwindow
+BUILD_MAINWINDOW_DIR = test_mainwindow
+SRC_MAINWINDOW_CPP_TEST = test_mainwindow.cpp
+SRC_MAINWINDOW_PRO_TEST = test_mainwindow.pro
+
 
 # Commands
 
-all: calendar
+all: calendar mainwindow
 
 make_build_directory:
 	@[ -d $(BUILD_DIR) ] $&& rm -rf $(BUILD_DIR)
@@ -51,13 +56,26 @@ calendar: make_build_directory
 	@cp $(BUILD_CALENDAR_DIR)/$(TARGET_CALENDAR) $(BUILD_DIR)
 	@echo "$(TARGET_CALENDAR) has built"
 
+mainwindow: make_build_directory
+	@[ -d $(BUILD_MAINWINDOW_DIR) ] $&& rm -rf $(BUILD_MAINWINDOW_DIR)
+	@mkdir $(BUILD_MAINWINDOW_DIR)
+	@cp $(SRC_MAINWINDOW_CPP_TEST) $(BUILD_MAINWINDOW_DIR)
+	@cp $(SRC_MAINWINDOW_PRO_TEST) $(BUILD_MAINWINDOW_DIR)
+	@mv $(BUILD_MAINWINDOW_DIR) ..
+	@(cd ../$(BUILD_MAINWINDOW_DIR) && qmake-qt5 && make)
+	@mv ../$(BUILD_MAINWINDOW_DIR) .
+	@cp $(BUILD_MAINWINDOW_DIR)/$(TARGET_MAINWINDOW) $(BUILD_DIR)
+	@echo "$(TARGET_MAINWINDOW) has built"
+
 help:
 	@echo "usage: make [ clean ]" 1>&2
 
 clean:
 	@rm -rf $(BUILD_DIR)
 	@rm -rf $(BUILD_CALENDAR_DIR)
+	@rm -rf $(BUILD_MAINWINDOW_DIR)
 	@echo "Cleaned $(BUILD_DIR)/$(RUNTESTS_SHELLSCRIPT)"
 	@echo "Cleaned $(BUILD_DIR)/$(TARGET_CALENDAR)"
+	@echo "Cleaned $(BUILD_DIR)/$(TARGET_MAINWINDOW)"
 
-.PHONY: all calendar
+.PHONY: all calendar mainwindow
