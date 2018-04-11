@@ -25,6 +25,7 @@ class TestMainwindow: public QObject
     Q_OBJECT
 private slots:
     void testIsLeapYear();
+    void testIsLeapNegativeYear();
 };
 
 void TestMainwindow::testIsLeapYear()
@@ -42,6 +43,23 @@ void TestMainwindow::testIsLeapYear()
     QVERIFY(!obj.isLeapYear(1800));
     QVERIFY(!obj.isLeapYear(1900));
     QVERIFY(obj.isLeapYear(2000));
+}
+
+void TestMainwindow::testIsLeapNegativeYear()
+{
+    MainWindowFunctions obj;
+
+    QVERIFY(obj.isLeapNegativeYear(1));
+    QVERIFY(!obj.isLeapNegativeYear(2));
+    QVERIFY(!obj.isLeapNegativeYear(3));
+    QVERIFY(!obj.isLeapNegativeYear(4));
+    QVERIFY(obj.isLeapNegativeYear(5));
+
+    QVERIFY(obj.isLeapNegativeYear(1));
+    QVERIFY(!obj.isLeapNegativeYear(101));
+    QVERIFY(!obj.isLeapNegativeYear(201));
+    QVERIFY(!obj.isLeapNegativeYear(301));
+    QVERIFY(obj.isLeapNegativeYear(401));
 }
 
 QTEST_MAIN(TestMainwindow)
