@@ -31,7 +31,17 @@ void TestMainwindow::testIsLeapYear()
 {
     MainWindowFunctions obj;
 
+    QVERIFY(obj.isLeapYear(2012));
+    QVERIFY(!obj.isLeapYear(2013));
+    QVERIFY(!obj.isLeapYear(2014));
+    QVERIFY(!obj.isLeapYear(2015));
     QVERIFY(obj.isLeapYear(2016));
+
+    QVERIFY(obj.isLeapYear(1600));
+    QVERIFY(!obj.isLeapYear(1700));
+    QVERIFY(!obj.isLeapYear(1800));
+    QVERIFY(!obj.isLeapYear(1900));
+    QVERIFY(obj.isLeapYear(2000));
 }
 
 QTEST_MAIN(TestMainwindow)
