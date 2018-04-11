@@ -217,22 +217,19 @@ void MainWindow::on_action_triggered()
 
 void MainWindow::slot1_alignNumberOfDays()
 {
-    int monthDays[] = {31, 28, 31, 30,
-                       31, 30, 31, 31,
-                       30, 31, 30, 31};
     int month = ui->comboBox_month->currentIndex() + 1;
     size_t year = ui->spinBox_year->value();
     bool isOurEra = ui->radioButton_era->isChecked();
-
-    if (month == 2) {
-        int value = monthDays[month - 1];
-        if ((isOurEra && winFuncs.isLeapYear(year)) ||
-            (!isOurEra && winFuncs.isLeapNegativeYear(year)))
+    int monthDays[] = {31, 28, 31, 30,
+                       31, 30, 31, 31,
+                       30, 31, 30, 31};
+    int value = monthDays[month - 1];
+    if (month == 2 &&
+        (((isOurEra && winFuncs.isLeapYear(year)) ||
+          (!isOurEra && winFuncs.isLeapNegativeYear(year))))) {
             value++;
-        ui->spinBox_day->setMaximum(value);
-    } else {
-        ui->spinBox_day->setMaximum(monthDays[month - 1]);
     }
+    ui->spinBox_day->setMaximum(value);
 }
 
 bool MainWindow::eventFilter(QObject *object, QEvent *event)
