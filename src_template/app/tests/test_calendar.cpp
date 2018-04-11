@@ -27,6 +27,7 @@ private slots:
     void testGetPart();
     void testTableLookUp();
     void testGetBasis();
+    void testGetElement();
 };
 
 void TestCalendar::testGetPart()
@@ -101,6 +102,33 @@ void TestCalendar::testGetBasis()
     QVERIFY2(obj.getBasis() == Calendar::B_Yan, "1 1 1 true");
     obj.setDate(1, 1, 1, false);
     QVERIFY2(obj.getBasis() == Calendar::B_In, "1 1 1 false");
+}
+
+void TestCalendar::testGetElement()
+{
+    Calendar obj;
+
+    // values with table lookup
+    obj.setDate(7, 2, 2016, true);
+    QVERIFY2(obj.getElement() == Calendar::E_Wood, "7 2 2016 true");
+    obj.setDate(8, 2, 2016, true);
+    QVERIFY2(obj.getElement() == Calendar::E_Fire, "8 2 2016 true");
+
+    // values without table lookup
+    obj.setDate(20, 1, 1899, true);
+    QVERIFY2(obj.getElement() == Calendar::E_Earth, "20 1 1899 true");
+    obj.setDate(21, 1, 1899, true);
+    QVERIFY2(obj.getElement() == Calendar::E_Unknown, "21 1 1899 true");
+    obj.setDate(19, 2, 1899, true);
+    QVERIFY2(obj.getElement() == Calendar::E_Unknown, "19 2 1899 true");
+    obj.setDate(20, 2, 1899, true);
+    QVERIFY2(obj.getElement() == Calendar::E_Earth, "20 2 1899 true");
+
+    // era border
+    obj.setDate(1, 1, 1, true);
+    QVERIFY2(obj.getElement() == Calendar::E_Metal, "1 1 1 true");
+    obj.setDate(1, 1, 1, false);
+    QVERIFY2(obj.getElement() == Calendar::E_Earth, "1 1 1 false");
 }
 
 QTEST_MAIN(TestCalendar)
